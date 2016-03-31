@@ -8,6 +8,8 @@ import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+import org.eclipse.jetty.util.log.Log;
+import org.eclipse.jetty.util.log.Logger;
 import servlets.SessionsServlet;
 import servlets.SignInServlet;
 import servlets.SignUpServlet;
@@ -44,6 +46,8 @@ public class Main {
         server.setHandler(handlers);
 
         server.start();
+        Logger log = Log.getLog();
+        log.info("Server started");
         server.join();
     }
 }
