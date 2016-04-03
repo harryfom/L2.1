@@ -1,7 +1,7 @@
 package servlets;
 
-import accounts.AccountService;
-import accounts.UserProfile;
+import accounts.executor.AccountService;
+import accounts.dataSets.UserProfile;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
@@ -35,7 +35,7 @@ public class SignUpServlet extends HttpServlet {
 
         UserProfile profile = new UserProfile(login,pass,"no@e.mail");
         accountService.addNewUser(profile);
-        accountService.addSession(request.getSession().getId(), profile);
+//        accountService.addSession(request.getSession().getId(), profile);
         Gson gson = new Gson();
         String json = gson.toJson(profile);
         response.setContentType("text/html;charset=utf-8");

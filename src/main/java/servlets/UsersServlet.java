@@ -1,6 +1,6 @@
 package servlets;
 
-import accounts.AccountService;
+import accounts.executor.AccountService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

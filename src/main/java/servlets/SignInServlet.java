@@ -1,8 +1,7 @@
 package servlets;
 
-import accounts.AccountService;
-import accounts.UserProfile;
-import com.google.gson.Gson;
+import accounts.executor.AccountService;
+import accounts.dataSets.UserProfile;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -41,7 +40,7 @@ public class SignInServlet extends HttpServlet {
             return;
         }
 
-        accountService.addSession(request.getSession().getId(), profile);
+//        accountService.addSession(request.getSession().getId(), profile);
         response.setContentType("text/html;charset=utf-8");
         response.getWriter().println("Authorized: "+login);
         response.setStatus(HttpServletResponse.SC_OK);
