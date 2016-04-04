@@ -44,4 +44,10 @@ public class SignUpServlet extends HttpServlet {
         response.setStatus(HttpServletResponse.SC_OK);
     }
 
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/html;charset=utf-8");
+        resp.getWriter().println("Here");
+        resp.setStatus(HttpServletResponse.SC_OK);
+    }
 }

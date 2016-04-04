@@ -21,7 +21,7 @@ import java.util.Map;
  */
 public class AccountService {
     private static final String hibernate_show_sql = "true";
-    private static final String hibernate_hbm2ddl = "create";
+    private static final String hibernate_hbm2ddl = "update";
 
     private final SessionFactory sessionFactory;
 
