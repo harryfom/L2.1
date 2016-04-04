@@ -5,6 +5,7 @@ import accounts.dataSets.UserProfile;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
@@ -22,7 +23,7 @@ import java.util.Map;
  */
 public class AccountService {
     private static final String hibernate_show_sql = "true";
-    private static final String hibernate_hbm2ddl = "validate";
+    private static final String hibernate_hbm2ddl = "update";
 
     private final SessionFactory sessionFactory;
 
@@ -54,8 +55,10 @@ public class AccountService {
     public long addNewUser(UserProfile userProfile) {
         try {
             Session session = sessionFactory.openSession();
+            Transaction transaction = session.beginTransaction();
             UserDAO dao = new UserDAO(session);
             long userId = dao.addUser(userProfile);
+            transaction.commit();
             session.close();
             return userId;
         } catch (HibernateException e) {
