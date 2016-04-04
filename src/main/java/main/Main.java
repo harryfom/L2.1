@@ -12,6 +12,7 @@ import org.eclipse.jetty.util.log.Log;
 import org.eclipse.jetty.util.log.Logger;
 import servlets.SignInServlet;
 import servlets.SignUpServlet;
+import servlets.UserListServlet;
 
 /**
  * @author v.chibrikov
@@ -30,6 +31,7 @@ public class Main {
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.addServlet(new ServletHolder(new SignUpServlet(accountService)), "/signup");
         context.addServlet(new ServletHolder(new SignInServlet(accountService)), "/signin");
+        context.addServlet(new ServletHolder(new UserListServlet(accountService)), "/users");
 
 
         ResourceHandler resource_handler = new ResourceHandler();

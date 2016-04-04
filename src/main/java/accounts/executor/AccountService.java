@@ -10,6 +10,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -21,7 +22,7 @@ import java.util.Map;
  */
 public class AccountService {
     private static final String hibernate_show_sql = "true";
-    private static final String hibernate_hbm2ddl = "update";
+    private static final String hibernate_hbm2ddl = "validate";
 
     private final SessionFactory sessionFactory;
 
@@ -72,6 +73,19 @@ public class AccountService {
         } catch (HibernateException e) {
             throw new DBException(e);
         }
+    }
+
+    public List<UserProfile> getAllUsers() {
+        try {
+            Session session = sessionFactory.openSession();
+            UserDAO dao = new UserDAO(session);
+            List<UserProfile> userProfiles = dao.getAllUsers();
+            session.close();
+            return userProfiles;
+        } catch (HibernateException e) {
+            throw new DBException(e);
+        }
+
     }
 
 }
