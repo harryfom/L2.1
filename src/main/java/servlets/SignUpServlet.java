@@ -21,6 +21,7 @@ public class SignUpServlet extends HttpServlet {
     }
 
     // регистрация нового пользователя
+    @Override
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response) throws ServletException, IOException {
         String login = request.getParameter("login");

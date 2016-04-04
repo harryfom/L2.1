@@ -2,7 +2,6 @@ package accounts.executor;
 
 import accounts.dao.UserDAO;
 import accounts.dataSets.UserProfile;
-import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -59,9 +58,8 @@ public class AccountService {
             session.close();
             return userId;
         } catch (HibernateException e) {
-            throw e;
+            throw new DBException(e);
         }
-
     }
 
     public UserProfile getUserByLogin(String login) {
@@ -72,7 +70,7 @@ public class AccountService {
             session.close();
             return userProfile;
         } catch (HibernateException e) {
-            throw e;
+            throw new DBException(e);
         }
     }
 
